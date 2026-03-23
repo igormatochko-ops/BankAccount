@@ -4,14 +4,10 @@ namespace BankAccount
 {
     class Account
     {
-        // Атрибуты (поля)
-        private string name;      // наименование
-        private int number;       // номер счета
-        private double sum;       // сумма
+        private string name;
+        private int number;
+        private double sum;
 
-        /// <summary>
-        /// Конструктор по умолчанию.
-        /// </summary>
         public Account()
         {
             name = "Неизвестно";
@@ -19,12 +15,6 @@ namespace BankAccount
             sum = 0.0;
         }
 
-        /// <summary>
-        /// Конструктор с параметрами.
-        /// </summary>
-        /// <param name="name">Наименование счета</param>
-        /// <param name="number">Номер счета</param>
-        /// <param name="sum">Сумма на счете</param>
         public Account(string name, int number, double sum)
         {
             this.name = name;
@@ -32,10 +22,6 @@ namespace BankAccount
             this.sum = sum;
         }
 
-        /// <summary>
-        /// Конструктор копирования.
-        /// </summary>
-        /// <param name="other">Другой объект Account</param>
         public Account(Account other)
         {
             name = other.name;
@@ -43,9 +29,6 @@ namespace BankAccount
             sum = other.sum;
         }
 
-        /// <summary>
-        /// Метод для вывода информации о счете.
-        /// </summary>
         public void PrintInfo()
         {
             Console.WriteLine($"Наименование: {name}");
@@ -53,10 +36,6 @@ namespace BankAccount
             Console.WriteLine($"Сумма: {sum} руб.");
         }
 
-        /// <summary>
-        /// Пополнение счета.
-        /// </summary>
-        /// <param name="amount">Сумма пополнения</param>
         public void Deposit(double amount)
         {
             if (amount > 0)
@@ -70,10 +49,6 @@ namespace BankAccount
             }
         }
 
-        /// <summary>
-        /// Снятие средств со счета.
-        /// </summary>
-        /// <param name="amount">Сумма снятия</param>
         public void Withdraw(double amount)
         {
             if (amount > 0 && amount <= sum)
@@ -87,7 +62,6 @@ namespace BankAccount
             }
         }
 
-        // Свойства для доступа к полям (опционально)
         public string Name
         {
             get { return name; }
@@ -111,26 +85,22 @@ namespace BankAccount
     {
         static void Main(string[] args)
         {
-            // 1. Конструктор по умолчанию
             Account acc1 = new Account();
             Console.WriteLine("=== Счет 1 (конструктор по умолчанию) ===");
             acc1.PrintInfo();
 
-            // 2. Конструктор с параметрами
             Account acc2 = new Account("Зарплатный", 123456, 50000.50);
             Console.WriteLine("\n=== Счет 2 (конструктор с параметрами) ===");
             acc2.PrintInfo();
 
-            // 3. Конструктор копирования
             Account acc3 = new Account(acc2);
             Console.WriteLine("\n=== Счет 3 (копия счета 2) ===");
             acc3.PrintInfo();
 
-            // 4. Демонстрация методов
             Console.WriteLine("\n=== Операции со счетом 2 ===");
             acc2.Deposit(10000);
             acc2.Withdraw(20000);
-            acc2.Withdraw(50000); // попытка снять больше, чем есть
+            acc2.Withdraw(50000);
 
             Console.WriteLine("\n=== Финальное состояние счета 2 ===");
             acc2.PrintInfo();
@@ -138,6 +108,4 @@ namespace BankAccount
             Console.ReadLine();
         }
     }
-} 
-// Final version
-// Constructor with parameters implemented
+}
